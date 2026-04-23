@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# XendFinance - High-Fidelity Mobile Banking Dashboard
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<div align="center">
+  <img src="./assets/iPhone-13-PRO-localhost (10).png" width="24%" />
+  <img src="./assets/iPhone-13-PRO-localhost (11).png" width="24%" />
+  <img src="./assets/iPhone-13-PRO-localhost (12).png" width="24%" />
+  <img src="./assets/iPhone-13-PRO-localhost (13).png" width="24%" />
+   <img src="./assets/iPhone-13-PRO-localhost (15).png" width="24%" />
+  <img src="./assets/iPhone-13-PRO-localhost (16).png" width="24%" />
+  <img src="./assets/iPhone-13-PRO-localhost (17).png" width="24%" />
+</div>
 
-## Get started
+XendFinance is a premium, high-fidelity mobile banking and asset management application...
 
-1. Install dependencies
+APK download  link: https://expo.dev/artifacts/eas/nnijpeMhLa4QJofNVV4kSz.apk
 
+## ✨ Key Features
+
+### 🔐 Advanced Authentication
+- **Multi-Step Onboarding**: Seamless flow through Welcome, Email, and Password screens.
+- **Biometric Integration**: Integrated `expo-camera` capabilities for secure identity verification and QR scanning.
+- **Dynamic Personalization**: Automatically extracts and formats user handles from email addresses.
+
+### 📊 Comprehensive Dashboard
+- **Home Hub**: Quick overview of Portfolio Balance and Total Savings with toggleable privacy modes.
+- **Wallet Engine**: Multi-asset management screen supporting **Stablecoins**, **Utility tokens**, and **Meme coins** with real-time value filtering.
+- **Savings Plans**: Dedicated hub for creating fixed/flexible savings plans with integrated interest estimation.
+- **Referral System**: Personalized referral code generation, rewards tracking, and native social sharing integration.
+
+### 👤 Account & Security
+- **Profile Management**: Full-featured account settings including KYC verification status and biometric security toggles.
+- **Privacy Controls**: Global "Eye" toggle to mask sensitive financial figures across the entire app.
+- **Logout Flow**: Intuitive custom dropdown menu for secure session termination.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Expo](https://expo.dev/) (SDK 54)
+- **Navigation**: [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing)
+- **Styling**: [NativeWind (v4)](https://www.nativewind.dev/) / Tailwind CSS
+- **Typography**: [Google Fonts](https://font.expo.dev/) (Roboto & Lato)
+- **Icons**: Expo Vector Icons (Material, Ionicons, Octicons)
+- **Hardware**: Expo Camera, Clipboard, Haptics
+
+## 🎨 Design System
+
+- **Primary Theme**: Deep Dark (`#0F0F0F`)
+- **Accent Color**: Xend Blue (`#2D4DD3`)
+- **Typography**:
+  - **Roboto**: Utilized for high-impact headings, balances, and primary titles.
+  - **Lato**: Utilized for body text, descriptions, and secondary labels.
+- **Visual Style**: Modern geometric layout with refined `rounded-xl` border radii for a professional fintech feel.
+
+## 📁 Project Structure
+
+```text
+├── app/                  # Expo Router directory
+│   ├── auth/             # Authentication screens (Login, Welcome, Email)
+│   ├── (tabs)/           # Main dashboard tab navigation
+│   │   ├── home.tsx      # Overview & Portfolio
+│   │   ├── wallet.tsx    # Asset management
+│   │   ├── plans.tsx     # Savings products
+│   │   ├── referral.tsx  # Rewards & Sharing
+│   │   └── profile.tsx   # Account & Settings
+├── components/           # Reusable UI components
+│   ├── ui/               # Core design elements (CustomTabBar, etc.)
+│   └── ...               # Functional components (SupportChat, Logo)
+├── assets/               # Images and fonts
+└── tailwind.config.js    # NativeWind font & theme configuration
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
+- Expo Go app on your physical device (recommended)
+
+### Installation
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. Start the development server:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Building
+The project is configured for **EAS Build**. To build a preview APK for Android:
 ```bash
-npm run reset-project
+eas build -p android --profile preview
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📄 License
+Private Repository - All Rights Reserved.
