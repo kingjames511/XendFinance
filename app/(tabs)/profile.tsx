@@ -11,8 +11,14 @@ export default function ProfileScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
   const [biometricsEnabled, setBiometricsEnabled] = React.useState(true);
   const [showTooltip, setShowTooltip] = React.useState(false);
+  const [showMenu, setShowMenu] = React.useState(false);
 
   const prefix = email ? email.split('@')[0] : 'UNKNOWN_USER';
+
+  const handleLogoutAction = () => {
+    setShowMenu(false);
+    router.replace('/auth/welcome');
+  };
   const name = prefix
     .split('_')
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
@@ -54,11 +60,29 @@ export default function ProfileScreen() {
       <SafeAreaView className="flex-1" edges={['top']}>
         <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
 
-          <View className="flex-row justify-between items-center mt-4 mb-6">
+          <View className="flex-row justify-between items-center mt-4 mb-6 z-50">
             <Text className="text-white text-3xl font-bold font-roboto">Account</Text>
-            <TouchableOpacity onPress={handleLogout}>
-              <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
-            </TouchableOpacity>
+            <View className="relative">
+              <TouchableOpacity 
+                onPress={() => setShowMenu(!showMenu)}
+                className="p-2 -mr-2 items-center justify-center"
+                hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+              >
+                <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
+              </TouchableOpacity>
+
+              {showMenu && (
+                <View className="absolute top-10 right-0 bg-[#262626] w-32 rounded-xl shadow-2xl py-2 z-50 border border-gray-800">
+                   <TouchableOpacity 
+                    onPress={handleLogoutAction}
+                    className="flex-row items-center px-4 py-2"
+                   >
+                     <MaterialCommunityIcons name="logout" size={18} color="#FF3B30" />
+                     <Text className="text-[#FF3B30] font-bold ml-2 font-roboto">Logout</Text>
+                   </TouchableOpacity>
+                </View>
+              )}
+            </View>
           </View>
 
           {/* User Profile Header */}

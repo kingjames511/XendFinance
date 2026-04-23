@@ -1,19 +1,19 @@
-import React from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar } from 'expo-status-bar';
-import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
-import { useLocalSearchParams } from 'expo-router';
 import { SupportChat } from '@/components/support-chat';
+import { FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useLocalSearchParams } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
   const [hideBalance, setHideBalance] = React.useState(true);
-  
+
   const portfolioBalance = "$1,240,000.00";
   const totalSavings = "$840,000.00";
 
-  const prefix = email ? email.split('@')[0] : 'michael_chuks';
+  const prefix = email ? email.split('@')[0] : 'UNKNOWN_USER';
   const name = prefix
     .split('_')
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
@@ -33,7 +33,7 @@ export default function HomeScreen() {
       <StatusBar style="light" />
       <SafeAreaView className="flex-1" edges={['top']}>
         <ScrollView className="flex-1 px-4" showsVerticalScrollIndicator={false}>
-          
+
           {/* Header section */}
           <View className="flex-row justify-between items-center py-4 mb-2">
             <View className="flex-row items-center">
@@ -64,7 +64,7 @@ export default function HomeScreen() {
                   <Ionicons name="chevron-forward" size={10} color="white" />
                 </TouchableOpacity>
               </View>
-              
+
               <View className="flex-row justify-between items-end">
                 <Text className="text-white text-2xl font-bold tracking-widest font-roboto">
                   {hideBalance ? "**********" : portfolioBalance}
@@ -79,15 +79,15 @@ export default function HomeScreen() {
             <View className="bg-[#F0F4FF] p-4">
               <View className="flex-row justify-between items-center">
                 <View className="flex-row items-center">
-                   <View className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm mr-3">
-                      <MaterialCommunityIcons name="seedling-outline" size={20} color="#2D4DD3" />
-                   </View>
-                   <View>
-                      <Text className="text-[#2D4DD3] text-[10px] font-bold font-roboto">Total Savings</Text>
-                      <Text className="text-[#2D4DD3] text-base font-bold tracking-widest font-lato">
-                        {hideBalance ? "*********" : totalSavings}
-                      </Text>
-                   </View>
+                  <View className="bg-white p-2 rounded-xl border border-gray-100 shadow-sm mr-3">
+                    <MaterialCommunityIcons name="seedling-outline" size={20} color="#2D4DD3" />
+                  </View>
+                  <View>
+                    <Text className="text-[#2D4DD3] text-[10px] font-bold font-roboto">Total Savings</Text>
+                    <Text className="text-[#2D4DD3] text-base font-bold tracking-widest font-lato">
+                      {hideBalance ? "*********" : totalSavings}
+                    </Text>
+                  </View>
                 </View>
                 <TouchableOpacity className="flex-row items-center border border-[#2D4DD3] px-3 py-1 rounded-xl">
                   <Text className="text-[#2D4DD3] font-bold text-[10px] mr-1 font-roboto">Plans</Text>
