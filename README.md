@@ -12,7 +12,7 @@
 
 XendFinance is a premium, high-fidelity mobile banking and asset management application...
 
-APK download  link: https://expo.dev/artifacts/eas/nnijpeMhLa4QJofNVV4kSz.apk
+APK download  link: https://expo.dev/artifacts/eas/5cP8A1rW4viTmmzLFuvfnR.apk
 
 ## ✨ Key Features
 
