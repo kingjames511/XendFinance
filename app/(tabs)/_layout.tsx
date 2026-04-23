@@ -11,16 +11,20 @@ export default function TabLayout() {
         options={{ title: 'Home', tabBarShowLabel: false }}
       />
       <Tabs.Screen
-        name="budget"
-        options={{ title: 'Budget', tabBarShowLabel: false }}
+        name="wallet"
+        options={{ title: 'Wallet', tabBarShowLabel: false }}
       />
       <Tabs.Screen
-        name="save"
-        options={{ title: 'Save', tabBarShowLabel: false }}
+        name="referral"
+        options={{ title: 'Referral', tabBarShowLabel: false }}
+      />
+      <Tabs.Screen
+        name="plans"
+        options={{ title: 'Plans', tabBarShowLabel: false }}
       />
       <Tabs.Screen
         name="profile"
-        options={{ title: 'Profile', tabBarShowLabel: false }}
+        options={{ title: 'More', tabBarShowLabel: false }}
       />
     </Tabs>
   );

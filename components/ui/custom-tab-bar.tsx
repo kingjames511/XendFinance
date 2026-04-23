@@ -2,12 +2,14 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { PlatformPressable } from '@react-navigation/elements';
 import { View, Text, StyleSheet } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const tabs = [
-  { name: 'home', icon: 'house.fill', label: 'Home' },
-  { name: 'budget', icon: 'chart.pie.fill', label: 'Budget' },
-  { name: 'save', icon: 'banknote.fill', label: 'Save' },
-  { name: 'profile', icon: 'person.fill', label: 'Profile' },
+const tabsConfig = [
+  { name: 'home', icon: 'home', label: 'Home', type: 'ionicons' },
+  { name: 'wallet', icon: 'card-outline', label: 'Wallet', type: 'ionicons' },
+  { name: 'referral', icon: 'people', label: 'Referral', type: 'ionicons' },
+  { name: 'plans', icon: 'piggy-bank-outline', label: 'Plans', type: 'material' },
+  { name: 'profile', icon: 'person-outline', label: 'More', type: 'ionicons' },
 ];
 
 export function CustomTabBar({ state, navigation }: BottomTabBarProps) {
@@ -15,6 +17,8 @@ export function CustomTabBar({ state, navigation }: BottomTabBarProps) {
     <View style={styles.container}>
       {state.routes.map((route, index) => {
         const isFocused = state.index === index;
+        const config = tabsConfig.find((t) => t.name === route.name);
+        const isCenter = route.name === 'referral';
 
         const onPress = () => {
           const event = navigation.emit({
@@ -47,12 +51,27 @@ export function CustomTabBar({ state, navigation }: BottomTabBarProps) {
                 Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
               }
             }}
-            style={styles.tab}>
-            <Text style={[styles.icon, isFocused && styles.iconFocused]}>
-              {tabs.find((t) => t.name === route.name)?.icon || 'circle'}
-            </Text>
+            style={[styles.tab, isCenter && styles.centerTabWrapper]}>
+            <View style={[
+              isCenter ? styles.centerIconContainer : styles.iconContainer,
+              isFocused && !isCenter && styles.focusedIconContainer
+            ]}>
+              {config?.type === 'ionicons' ? (
+                <Ionicons 
+                  name={config.icon as any} 
+                  size={isCenter ? 32 : 24} 
+                  color={isCenter ? 'white' : (isFocused ? 'white' : '#6B7280')} 
+                />
+              ) : (
+                <MaterialCommunityIcons 
+                  name={config?.icon as any} 
+                  size={isCenter ? 32 : 24} 
+                  color={isCenter ? 'white' : (isFocused ? 'white' : '#6B7280')} 
+                />
+              )}
+            </View>
             <Text style={[styles.label, isFocused && styles.labelFocused]}>
-              {tabs.find((t) => t.name === route.name)?.label || route.name}
+              {config?.label || route.name}
             </Text>
           </PlatformPressable>
         );
@@ -64,12 +83,14 @@ export function CustomTabBar({ state, navigation }: BottomTabBarProps) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: '#0F0F0F',
     borderTopWidth: 1,
-    borderTopColor: '#e5e5e5',
+    borderTopColor: '#1A1A1A',
     paddingBottom: 24,
-    paddingTop: 8,
-    height: 80,
+    paddingTop: 10,
+    height: 90,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   tab: {
     flex: 1,
@@ -77,17 +98,40 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 4,
   },
+  centerTabWrapper: {
+    marginTop: -40, // Pull the center tab up
+  },
+  iconContainer: {
+    padding: 2,
+  },
+  focusedIconContainer: {
+    // Optional: add a glow or specific style for focused non-center icons
+  },
+  centerIconContainer: {
+    backgroundColor: '#2D4DD3', // Blue color
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#F97316', // Orange ring
+    shadowColor: '#2D4DD3',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
   icon: {
     fontSize: 24,
   },
-  iconFocused: {
-    color: '#007AFF',
-  },
   label: {
-    fontSize: 12,
-    color: '#8e8e93',
+    fontSize: 10,
+    color: '#6B7280',
+    fontWeight: '500',
+    marginTop: 2,
   },
   labelFocused: {
-    color: '#007AFF',
+    color: 'white',
   },
 });

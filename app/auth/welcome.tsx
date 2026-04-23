@@ -33,10 +33,10 @@ export default function WelcomeScreen() {
 
             {/* Headline Section */}
             <View className="items-center mb-8 px-4">
-              <Text className="text-2xl font-bold text-white text-center leading-tight mb-3">
+              <Text className="text-2xl font-bold text-white text-center leading-tight mb-3 font-roboto">
                 Welcome to the{"\n"}Future of finance
               </Text>
-              <Text className="text-gray-400 text-center text-sm leading-5 px-4">
+              <Text className="text-gray-400 text-center text-sm leading-5 px-4 font-lato">
                 To get started create an account, if you already have an account we will log you in
               </Text>
             </View>

@@ -39,24 +39,24 @@ export default function EmailScreen() {
         <View className="flex-1 px-4">
           {/* Header section with Support Chat */}
           <View className="flex-row justify-between items-center pt-4 mb-6">
-            <Text className="text-3xl font-bold text-white">Welcome</Text>
+            <Text className="text-3xl font-bold text-white font-roboto">Welcome</Text>
             <SupportChat />
           </View>
 
           <View className="flex-1">
-            <Text className="text-lg font-bold text-white mb-6">
+            <Text className="text-lg font-bold text-white mb-6 font-roboto">
               Enter your email address
             </Text>
 
             {/* Email Input Field */}
             <View className="mb-5">
-              <Text className="text-gray-500 mb-2 text-xs font-medium">Email</Text>
-              <View className={`flex-row items-center bg-[#1A1A1A] border ${error ? 'border-red-500' : 'border-gray-800'} rounded-xl px-4 py-3`}>
+              <Text className="text-gray-500 mb-2 text-xs font-medium font-lato">Email</Text>
+              <View className={`flex-row items-center bg-[#1A1A1A] rounded-xl px-4 py-3`}>
                 <MaterialCommunityIcons name="email-outline" size={18} color={error ? "#EF4444" : "#6B7280"} />
                 <TextInput
                   placeholder="Enter your Email"
                   placeholderTextColor="#6B7280"
-                  className="flex-1 ml-3 text-white text-sm"
+                  className="flex-1 ml-3 text-white text-sm outline-none"
                   keyboardType="email-address"
                   autoCapitalize="none"
                   value={email}
